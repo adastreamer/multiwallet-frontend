@@ -1,0 +1,165 @@
+*
+  font-family: monospace
+  box-sizing: border-box
+
+h1
+  font-size: 26px
+  display: inline-block
+  margin: 0
+  padding: 4px 0
+
+hr
+  width: 100%
+
+.container
+  position: relative
+  margin: 0 auto
+  width: 1024px
+  max-width: 1024px
+
+.menu
+  position: relative
+  float: left
+  z-index: 999
+  width: 200px
+  margin: 0
+  padding: 0
+  li
+    margin: 0 0 3px
+    padding-right: 10px
+    display: block
+    a
+      display: block
+      padding: 10px 5px
+      background: rgba(245,245,245)
+      color: black
+      font-weight: bold
+      text-decoration: none
+      &:hover, &.active
+        text-decoration: none
+        background: rgba(235,235,235)
+
+.content
+  position: relative
+  width: 100%
+  padding-left: 200px
+  min-height: 500px
+
+.panel
+  display: block
+  magrin: 0
+  padding: 0
+  li
+    display: inline-block
+    vertical-align: top
+    magrin: 20px
+    padding: 5px 20px
+    border-radius: 20px
+    background: #e1ffe1
+
+.list-meta
+  text-align: right
+  padding: 10px
+
+.list
+  width: 100%
+  text-align: left
+  border-collapse: collapse
+  tr
+    &:nth-child(odd)
+      td, th
+        background: #f0fff0
+      &.table-row:hover
+        td, th
+          background: #e5f1e5
+    &:nth-child(even)
+      td, th
+        background: #eafbff
+      &.table-row:hover
+        td, th
+          background: #dff0f4
+  td, th
+    padding: 5px 10px
+    &:last-child
+      text-align: right
+  a
+    color: black
+    text-decoration: none
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+
+
+.paginator
+  float: left
+  ul
+    display: inline-block
+    padding: 0
+    li
+      display: inline-block
+      a
+        display: inline-block
+        text-decoration: none
+        cursor: pointer
+        &:hover
+          text-decoration: underline
+
+.actions
+  margin: 0
+  padding: 0
+  &.right
+    float: right
+  li
+    margin: 0
+    padding: 9px 0 14px
+    display: inline-block
+    a
+      background: #0071a3
+      padding: 3px 10px
+      color: white
+      cursor: pointer
+      border-radius: 20px
+      font-weight: bold
+      text-decoration: none
+      font-size: 13px
+      &:hover
+        background: #0094d5
+      &.delete
+        background: #950202
+        &:hover
+          background: #bb0000
+
+.common-form
+  padding: 0
+  fieldset
+    padding: 10px
+    background: #f6f8ff
+    border: 2px solid #0071a3
+
+.error
+  padding: 10px 0 5px
+  color: red
+.result
+  padding: 10px 0 5px
+  color: green
+
+
+.small-action
+  cursor: pointer
+  background: #e5f1f6
+  display: inline-block
+  padding: 2px 8px
+  border-radius: 8px
+  &:hover
+    background: #b0e8ff
+  &.green
+    background: #b4ffd7
+    &:hover
+      background: #31fe91
+  &.red
+    background: #fdd6d6
+    &:hover
+      background: #fe9f9f
+
+.r
+  text-align: right

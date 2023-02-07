@@ -1,0 +1,65 @@
+{{page-title "Addresses"}}
+
+<h1>Addresses</h1>
+
+<ul class="actions right">
+  <li>
+    <a onclick={{action "load"}}>Update Info</a>
+    <LinkTo @route="groups">Groups</LinkTo>
+  </li>
+</ul>
+{{!-- <div>
+  Total: {{this.data.total}}
+</div> --}}
+
+{{#if this.error}}
+  <div class="error">
+    {{ this.error }}
+  </div>
+{{/if}}
+
+<table class="list">
+  <tr class="table-header"><th>Value</th><th>Group</th><th>BNB</th><th>CHEEL</th><th>Action</th></tr>
+  {{#each this.addresses as |address|}}
+    <tr class="table-row">
+      <td>
+        {{address.value}}
+      </td>
+      <td>
+        {{address.group_name}}
+      </td>
+      <td>
+        {{address.balanceBNB}}
+      </td>
+      <td>
+        {{address.balanceCHEEL}}
+      </td>
+      <td>
+        <LinkTo @route="address" @model={{address.id}}>Open</LinkTo>
+<!--         {{#if (not-eq address.group_id 0)}}
+          <a onclick={{action "releaseAddress" address.id}}>Release</a>
+        {{/if}}
+        <a onclick={{action "deleteAddress" address.id}}>Delete</a> -->
+      </td>
+    </tr>
+  {{/each}}
+</table>
+
+<div class="list-meta">
+<small>
+  <div class="paginator">
+    <ul>
+      <li>
+        <a onclick={{action "gotoPrevPage"}}>PREV</a>
+      </li>
+      <li></li>
+      <li>
+        <a onclick={{action "gotoNextPage"}}>NEXT</a>
+      </li>
+    </ul>
+  </div>
+  Total: <b>{{ this.data.total }}</b>, Page: <b>{{ this.data.page }}</b>, Limit: <b>{{ this.data.limit }}</b>
+</small>
+</div>
+
+{{outlet}}

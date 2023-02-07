@@ -1,0 +1,32 @@
+{{page-title "GroupsNew"}}
+
+<h1>Create new group</h1>
+
+<ul class="actions right">
+  <li>
+    <LinkTo @route="groups">Back</LinkTo>
+  </li>
+</ul>
+
+<form class="common-form" onsubmit="return false;">
+  <fieldset>
+
+    <Input name="name" @type="text" title="Group Name" @value={{this.data.name}} required/>
+
+    <br/>
+    <br/>
+
+    <input type="submit" value="Submit" onclick={{action "createGroup"}}/>
+    {{#if this.error}}
+      <div class="error">
+        {{ this.error }}
+      </div>
+    {{/if}}
+    {{#if this.result}}
+      <div class="result">
+        {{ this.result }}
+      </div>
+    {{/if}}
+  </fieldset>
+</form>
+{{outlet}}

@@ -1,0 +1,40 @@
+{{page-title "Groups"}}
+
+<ul class="actions">
+  <li>
+    <LinkTo @route="groups_new">New Group</LinkTo>
+  </li>
+</ul>
+
+<table class="list">
+  <tr class="table-header"><th>Name</th><th>Action</th></tr>
+  {{#each this.data.groups as |group|}}
+    <tr class="table-row">
+      <td>
+        {{group.name}}
+      </td>
+      <td>
+        <LinkTo @route="group" @model={{group.id}}>Open</LinkTo>
+        <a onclick={{action "deleteGroup" group.id}}>Delete</a>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+<div class="list-meta">
+<small>
+  <div class="paginator">
+    <ul>
+      <li>
+        <a onclick={{action "gotoPrevPage"}}>PREV</a>
+      </li>
+      <li></li>
+      <li>
+        <a onclick={{action "gotoNextPage"}}>NEXT</a>
+      </li>
+    </ul>
+  </div>
+  Total: <b>{{ this.data.total }}</b>, Page: <b>{{ this.data.page }}</b>, Limit: <b>{{ this.data.limit }}</b>
+</small>
+</div>
+
+{{outlet}}

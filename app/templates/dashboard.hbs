@@ -1,0 +1,11 @@
+{{page-title "Dashboard"}}
+<ul class="panel">
+	<li>Groups: {{this.data.groupsCount}}</li>
+	<li>Addresses: {{this.data.addressesCount}}</li>
+</ul>
+{{#if this.error}}
+  <div class="error">
+    {{ this.error }}
+  </div>
+{{/if}}
+{{outlet}}

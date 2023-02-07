@@ -1,0 +1,73 @@
+{{page-title "Address"}}
+
+<h1>Address #{{this.address.id}}</h1>
+
+<ul class="actions right">
+  <li>
+    <a onclick={{action "load"}}>Update Info</a>
+    
+    <a class="delete" onclick={{action "deleteAddress"}}>Delete</a>
+  </li>
+</ul>
+<div>
+  <span>{{this.address.value}}</span>
+  <span>
+    <a class="small-action" onclick={{action "copy"}}>
+      {{#if this.copied}}
+        Copied
+      {{else}}
+        Copy
+      {{/if}}
+    </a>
+  </span>
+</div>
+
+<div>
+  <br/>
+  <span>Group:</span>
+  <span><LinkTo @route="group" @model={{this.address.group_id}}>{{this.address.group_name}}</LinkTo></span>
+  {{#if (eq this.address.group_id 0)}}
+    {{#if this.setGroupState}}
+      <select id="newGroup" onchange={{action "selectGroup" value="target.value"}} title="New Group" required>
+        <option value="" selected>-</option>
+        {{#each this.groups as |group|}}
+          <option value="{{group.id}}">{{group.name}}</option>
+        {{/each}}
+      </select>
+      <a class="small-action green" onclick={{action "assignAddressGroup"}}>✓</a>
+      <a class="small-action red" onclick={{action "stopAssignAddressGroup"}}>✗</a>
+    {{else}}
+      <a class="small-action" onclick={{action "startAssignAddressGroup"}}>Assign</a>
+    {{/if}}
+  {{else}}
+    <a class="small-action" onclick={{action "unassignAddressGroup"}}>Unassign</a>
+  {{/if}}
+</div>
+
+
+{{#if this.error}}
+  <div class="error">
+    {{ this.error }}
+  </div>
+{{/if}}
+
+<h3>Balances</h3>
+<table class="list">
+  <tr class="table-header">
+    <th>Currency</th>
+    <th class="r">Value</th>
+    <th></th>
+  </tr>
+  <tr class="table-row">
+    <td>BNB</td>
+    <td class="r">{{this.address.balanceBNB}}</td>
+    <td><a>Send</a></td>
+  </tr>
+  <tr class="table-row">
+    <td>CHEEL</td>
+    <td class="r">{{this.address.balanceCHEEL}}</td>
+    <td><a>Send</a></td>
+  </tr>
+</table>
+
+{{outlet}}

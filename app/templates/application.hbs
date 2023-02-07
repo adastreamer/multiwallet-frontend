@@ -1,7 +1,18 @@
-{{page-title "MultiwalletFrontend"}}
+{{page-title "MultiWallet"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
 
-{{outlet}}
+<div class="container">
+<h1>MultiWallet</h1>
+<hr/>
+<ul class="menu">
+<li><LinkTo @route="dashboard">Dashboard</LinkTo></li>
+<li><LinkTo @route="groups" @query={{hash page=undefined limit=undefined}}>Groups</LinkTo></li>
+<li><LinkTo @route="addresses">Addresses</LinkTo></li>
+</ul>
+<div class="content">
+{{ outlet }}
+</div>
+<br/>
+<hr/>
+Version: 0.0.1
+</div>

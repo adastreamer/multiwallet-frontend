@@ -1,0 +1,61 @@
+{{page-title "Group"}}
+
+<h1>Group #{{this.id}}</h1>
+
+<ul class="actions right">
+  <li>
+    <a onclick={{action "generateAddresses"}}>Generate Addresses</a>
+    <a onclick={{action "load"}}>Update Info</a>
+    <!-- <LinkTo @route="groups">Groups</LinkTo> -->
+    <a class="delete" onclick={{action "deleteGroup"}}>Delete</a>
+  </li>
+</ul>
+<div>
+  {{this.group.name}}
+</div>
+
+{{#if this.error}}
+  <div class="error">
+    {{ this.error }}
+  </div>
+{{/if}}
+
+<h3>Addresses ({{ this.addressesData.total }})</h3>
+<table class="list">
+  <tr class="table-header"><th>Value</th><th>BNB</th><th>CHEEL</th><th>Action</th></tr>
+  {{#each this.addresses as |address|}}
+    <tr class="table-row">
+      <td>
+        {{address.value}}
+      </td>
+      <td>
+        {{address.balanceBNB}}
+      </td>
+      <td>
+        {{address.balanceCHEEL}}
+      </td>
+      <td>
+        <LinkTo @route="address" @model={{address.id}}>Open</LinkTo>
+        <a onclick={{action "deleteAddress" address.id}}>Delete</a>
+      </td>
+    </tr>
+  {{/each}}
+</table>
+<div class="list-meta">
+<small>
+  <div class="paginator">
+    <ul>
+      <li>
+        <a onclick={{action "gotoPrevPage"}}>PREV</a>
+      </li>
+      <li></li>
+      <li>
+        <a onclick={{action "gotoNextPage"}}>NEXT</a>
+      </li>
+    </ul>
+  </div>
+  Total: <b>{{ this.addressesData.total }}</b>, Page: <b>{{ this.addressesData.page }}</b>, Limit: <b>{{ this.addressesData.limit }}</b>
+</small>
+</div>
+
+{{outlet}}

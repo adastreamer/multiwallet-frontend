@@ -42,6 +42,7 @@ module.exports = function (environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+  ENV.backendURL = 'http://localhost:8080';
 
   return ENV;
 };
