@@ -3,19 +3,13 @@ import Service from '@ember/service';
 
 export default class ApiService extends Service {
   async balanceCHEEL(ctx, address) {
-    var res = await this.get(
-      ctx,
-      '/api/v1/balance/cheel?address=' + address
-    );
+    var res = await this.get(ctx, '/api/v1/balance/cheel?address=' + address);
     var bal = res.balance;
     return (bal / 10 ** 18).toFixed(4);
   }
 
   async balanceBNB(ctx, address) {
-    var res = await this.get(
-      ctx,
-      '/api/v1/balance/bnb?address=' + address
-    );
+    var res = await this.get(ctx, '/api/v1/balance/bnb?address=' + address);
     var bal = res.balance;
     return (bal / 10 ** 18).toFixed(4);
   }
@@ -51,15 +45,22 @@ export default class ApiService extends Service {
   }
 
   async unassignAddressGroup(ctx, id) {
-    var res = await this.get(ctx, '/api/v1/addresses/' + id + '/unassign_group');
+    var res = await this.get(
+      ctx,
+      '/api/v1/addresses/' + id + '/unassign_group'
+    );
     return res;
   }
 
   async assignAddressGroup(ctx, id, group_id) {
     var data = {
-      group_id: parseInt(group_id)
+      group_id: parseInt(group_id),
     };
-    var res = await this.post(ctx, '/api/v1/addresses/' + id + '/assign_group', data);
+    var res = await this.post(
+      ctx,
+      '/api/v1/addresses/' + id + '/assign_group',
+      data
+    );
     return res;
   }
 
@@ -95,6 +96,11 @@ export default class ApiService extends Service {
 
   async info(ctx) {
     var res = await this.get(ctx, '/api/v1/info');
+    return res;
+  }
+
+  async logout(ctx) {
+    var res = await this.get(ctx, '/logout');
     return res;
   }
 

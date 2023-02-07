@@ -23,7 +23,10 @@ export default class AddressController extends Controller {
   newGroupID = undefined;
 
   setBalanceCHEEL = async function (ctx) {
-    ctx.address.balanceCHEEL = await ctx.api.balanceCHEEL(ctx, ctx.address.value);
+    ctx.address.balanceCHEEL = await ctx.api.balanceCHEEL(
+      ctx,
+      ctx.address.value
+    );
   };
 
   setBalanceBNB = async function (ctx) {
@@ -48,15 +51,15 @@ export default class AddressController extends Controller {
     }
   };
 
-  unassignAddressGroup = async function(ctx) {
+  unassignAddressGroup = async function (ctx) {
     var res = await ctx.api.unassignAddressGroup(ctx, ctx.address.id);
     await ctx.load(ctx);
   };
 
-  copy = function(ctx) {
+  copy = function (ctx) {
     navigator.clipboard.writeText(ctx.address.value);
     ctx.copied = true;
-    setTimeout(function(){
+    setTimeout(function () {
       ctx.copied = false;
     }, 1000);
   };
@@ -65,27 +68,31 @@ export default class AddressController extends Controller {
     load: async function () {
       this.load(this);
     },
-    copy: function(){
+    copy: function () {
       this.copy(this);
     },
     deleteAddress: async function () {},
     unassignAddressGroup: async function () {
       this.unassignAddressGroup(this);
     },
-    startAssignAddressGroup: async function (){
+    startAssignAddressGroup: async function () {
       this.setGroupState = true;
       var data = await this.api.groups(this);
       this.groups = data.groups;
     },
-    stopAssignAddressGroup: async function (){
+    stopAssignAddressGroup: async function () {
       this.setGroupState = false;
       this.groups = [];
     },
-    selectGroup: async function(new_group_id){
+    selectGroup: async function (new_group_id) {
       this.newGroupID = new_group_id;
     },
     assignAddressGroup: async function () {
-      var res = await this.api.assignAddressGroup(this, this.address.id, this.newGroupID);
+      var res = await this.api.assignAddressGroup(
+        this,
+        this.address.id,
+        this.newGroupID
+      );
       await this.load(this);
     },
   };
