@@ -100,7 +100,7 @@ export default class ApiService extends Service {
   }
 
   async logout(ctx) {
-    var res = await this.get(ctx, '/logout');
+    var res = await fetch('/logout');
     return res;
   }
 
