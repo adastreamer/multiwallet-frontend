@@ -39,10 +39,10 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
-  }
   ENV.backendURL = 'http://localhost:8080';
+  if (environment === 'production') {
+    ENV.backendURL = 'https://cheelee-multiwallet.talala.la';
+  }
 
   return ENV;
 };
