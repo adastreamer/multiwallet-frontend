@@ -6,6 +6,7 @@
   <li>
     <a onclick={{action "generateAddresses"}}>Generate Addresses</a>
     <a onclick={{action "load"}}>Update Info</a>
+    <a href="{{this.backendURL}}/api/v1/groups/{{this.id}}/addresses/export" target="_blank">Export Addresses</a>
     {{!-- <LinkTo @route="groups">Groups</LinkTo> --}}
     <a class="delete" onclick={{action "deleteGroup"}}>Delete</a>
   </li>

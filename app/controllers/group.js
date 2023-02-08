@@ -1,3 +1,4 @@
+import config from '../config/environment';
 import Controller from '@ember/controller';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
@@ -23,6 +24,7 @@ export default class GroupController extends Controller {
   @tracked addressesBalancesBNB = {};
   @tracked addressesBalancesCHEEL = {};
   @tracked error = undefined;
+  backendURL = config.backendURL;
 
   setBalanceCHEEL = async function (ctx, addr) {
     addr.balanceCHEEL = await ctx.api.balanceCHEEL(ctx, addr.value);
